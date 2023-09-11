@@ -1,0 +1,63 @@
+#:kivy 2.2.1
+<Button>
+    size_hint: (0.8, 0.8)
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+<FileChoosePopup>:
+    title: "Choose an audio file:"
+    size_hint: .9, .9
+    auto_dismiss: False
+
+    BoxLayout:
+        orientation: "vertical"
+        FileChooser:
+            id: filechooser
+            path: 'C:\\Users\\marcu'
+            FileChooserListLayout
+
+        BoxLayout:
+            size_hint: (1, 0.1)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            spacing: 20
+            Button:
+                text: "Cancel"
+                on_release: root.dismiss()
+            Button:
+                text: "Load"
+                on_release: root.load(filechooser.selection)
+                id: ldbtn
+                disabled: True if filechooser.selection == [] else False
+
+BoxLayout:
+    orientation: 'vertical'
+    spacing: 10
+    padding: 10
+    
+    Label:
+        text: app.cchord
+    
+    Button:
+        text: app.file_path
+        on_press: app.open_popup()
+
+    GridLayout:
+        cols: 3
+        Button:
+            text: 'Play'
+            on_press: app.play()
+
+        Button:
+            text: 'Pause'
+            on_press: app.pause()
+
+        Button:
+            text: 'Resume'
+            on_press: app.resume()
+
+        Button:
+            text: 'CHORDS'
+            on_press: app.chords()
+
+        Button:
+            text: 'Next'
+            on_press: app.nc()
