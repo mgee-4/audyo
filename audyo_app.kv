@@ -5,7 +5,7 @@
 
 <FileChoosePopup>:
     title: "Choose an audio file:"
-    size_hint: .9, .9
+    size_hint: .8, .8
     auto_dismiss: False
 
     BoxLayout:
@@ -35,29 +35,24 @@ BoxLayout:
     
     Label:
         text: app.cchord
-    
+
+    GridLayout:
+        spacing: 1
+        padding: 5
+        cols: 3
+
+        Button:
+            text: 'Play/Pause'
+            size_hint: .8, .8
+            on_press: app.toggle_play()
+
+        Button:
+            text: 'placeholder'
+            size_hint: .8, .8
+            on_press: app.chords()
+
     Button:
         text: app.file_path
         on_press: app.open_popup()
+        size_hint: (0.5, 0.5)
 
-    GridLayout:
-        cols: 3
-        Button:
-            text: 'Play'
-            on_press: app.play()
-
-        Button:
-            text: 'Pause'
-            on_press: app.pause()
-
-        Button:
-            text: 'Resume'
-            on_press: app.resume()
-
-        Button:
-            text: 'CHORDS'
-            on_press: app.chords()
-
-        Button:
-            text: 'Next'
-            on_press: app.nc()
